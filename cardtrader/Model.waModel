@@ -1,2 +1,131 @@
-{    "toJSON": true,    "dbInfo": [{        "name": "Model",        "uuid": ""    }],    "extraProperties": {        "version": "1",        "classes": {        },        "model": {            "scriptMode": "manual"
-        }    },    "dataClasses": []}
+
+{
+	"toJSON" : true,
+	"extraProperties" : 
+	{
+		"version" : "2",
+		"classes" : 
+		{
+			"Card" : 
+			{
+				"panelColor" : "#C4BD97",
+				"panel" : 
+				{
+					"pathVisible" : true,
+					"isOpen" : "true",
+					"position" : 
+					{
+						"X" : 136,
+						"Y" : 56
+					}
+				}
+			},
+			"CardSet" : 
+			{
+				"panelColor" : "#D8D8D8",
+				"panel" : 
+				{
+					"pathVisible" : true,
+					"isOpen" : "true",
+					"position" : 
+					{
+						"X" : 526,
+						"Y" : 111
+					}
+				}
+			}
+		},
+		"model" : 
+		{
+			"scriptMode" : "manual",
+			"workspaceLeft" : 0,
+			"workspaceTop" : 0
+		}
+	},
+	"dataClasses" : 
+	[
+		{
+			"name" : "Card",
+			"className" : "Card",
+			"collectionName" : "CardCollection",
+			"scope" : "public",
+			"attributes" : 
+			[
+				{
+					"name" : "ID",
+					"kind" : "storage",
+					"scope" : "public",
+					"indexed" : true,
+					"unique" : true,
+					"autosequence" : true,
+					"type" : "long",
+					"indexKind" : "btree"
+				},
+				{
+					"name" : "name",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "set",
+					"kind" : "relatedEntity",
+					"scope" : "public",
+					"type" : "CardSet",
+					"path" : "CardSet"
+				}
+			],
+			"key" : 
+			[
+				{
+					"name" : "ID"
+				}
+			]
+		},
+		{
+			"name" : "CardSet",
+			"className" : "CardSet",
+			"collectionName" : "CardSetCollection",
+			"scope" : "public",
+			"attributes" : 
+			[
+				{
+					"name" : "ID",
+					"kind" : "storage",
+					"scope" : "public",
+					"indexed" : true,
+					"unique" : true,
+					"autosequence" : true,
+					"type" : "long",
+					"indexKind" : "btree"
+				},
+				{
+					"name" : "name",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "code",
+					"kind" : "storage",
+					"scope" : "public",
+					"type" : "string"
+				},
+				{
+					"name" : "cards",
+					"kind" : "relatedEntities",
+					"scope" : "public",
+					"type" : "CardCollection",
+					"reversePath" : true,
+					"path" : "set"
+				}
+			],
+			"key" : 
+			[
+				{
+					"name" : "ID"
+				}
+			]
+		}
+	]
+}
